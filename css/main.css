@@ -1,0 +1,71 @@
+@font-face {
+  font-family: 'Xanh Mono';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Xanh Mono Italic'), local('XanhMono-Italic'), url(https://fonts.gstatic.com/s/xanhmono/v1/R70ejykVmvKCep-vWhSomgqU.ttf) format('truetype');
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  font-family: 'Xanh Mono', monospace;
+  background: #4b4b57;
+}
+header,
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  height: 300px;
+  background: #6a6767;
+  font-size: 40px;
+  color: #fff;
+  text-align: center;
+}
+footer {
+  height: 900px;
+}
+nav {
+  max-width: 900px;
+}
+nav ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  list-style: none;
+}
+nav ul li {
+  position: relative;
+}
+nav ul li a {
+  padding: 10px 15px;
+  display: flex;
+  flex: 0 0 1;
+  background: #5e5e71;
+  color: #fff;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+nav ul li a:hover {
+  background: #86869a;
+}
+nav ul ul {
+  display: none;
+  z-index: 10;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+.level-3 {
+  display: none;
+}
+._opened > ul {
+  display: flex;
+}
+/*# sourceMappingURL=main.css.map */
