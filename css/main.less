@@ -45,7 +45,7 @@ nav{
         }
         padding: 10px 15px;
         display: flex;
-        flex: 0 0 1;
+        white-space: nowrap;
         background: #5e5e71;
         color: #fff;
         font-weight: bold;
@@ -53,6 +53,13 @@ nav{
       }
     }
   }
+}
+
+.menu ul li:nth-child(2n) a{
+  &:hover{
+    background: #86869a;
+  }
+  background: #6e5e71;
 }
 
 nav ul ul {

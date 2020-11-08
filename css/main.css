@@ -45,13 +45,19 @@ nav ul li {
 nav ul li a {
   padding: 10px 15px;
   display: flex;
-  flex: 0 0 1;
+  white-space: nowrap;
   background: #5e5e71;
   color: #fff;
   font-weight: bold;
   transition: all 0.3s ease;
 }
 nav ul li a:hover {
+  background: #86869a;
+}
+.menu ul li:nth-child(2n) a {
+  background: #6e5e71;
+}
+.menu ul li:nth-child(2n) a:hover {
   background: #86869a;
 }
 nav ul ul {
