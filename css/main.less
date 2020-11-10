@@ -69,10 +69,25 @@ nav ul ul {
   position: absolute;
   top: 100%;
   left: 0;
+
+}
+
+nav ul.more-dropdawn{
+  right: 0;
+  left: auto;
 }
 
 .level-3{
   display: none;
+  left: 80px;
+}
+
+li.more-button{
+  &:hover{
+    ul{
+      display: flex;
+    }
+  }
 }
 
 ._opened{
