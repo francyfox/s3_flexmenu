@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         menuOffsetWidth = menu.offsetWidth,
         menu_width = menu.scrollWidth,
         menu_folder = menu.querySelectorAll('li'),
-        submenu = menu.children[0].querySelectorAll('ul'),
+        submenu = menu.children[0].children,
         MaxWidth = 0,
         TagsWidth = [];
 
@@ -22,6 +22,29 @@ document.addEventListener("DOMContentLoaded", function(event) {
     {
         folder.classList.remove('_opened');
     }
+
+    function HoverDelay (item)
+    {
+        var Time;
+
+        item.addEventListener('mouseover', function (event) {
+            this.classList.add('_opened');
+
+            if (Time)
+            {
+                clearTimeout(Time);
+            }
+        });
+
+
+        item.addEventListener('mouseleave', function (event)
+        {
+            var folder = this;
+            Time = setTimeout(function () {RemoveOpened(folder);}, 800);
+        });
+
+    }
+
 
     function initFlexMenu ( options )
     {
@@ -49,18 +72,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 count++;
             }
 
-            menu_folder[i].addEventListener('mouseover', function (e) {
-                this.removeEventListener('mouseleave', function (){});
-                this.classList.add('_opened');
-            });
+            HoverDelay(menu_folder[i]);
 
-            menu_folder[i].addEventListener('mouseleave', function ()
-            {
-                var folder = this;
-                setTimeout(function () {
-                    RemoveOpened(folder)
-                }, 800);
-            });
         }
 
         var last = menu.children[0].childElementCount - 2;
@@ -69,14 +82,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     function getReact ()
     {
-        submenu.forEach(function(item, i, arr){
-            console.log(item.parentElement);
-            return console.log(item.parentElement.getBoundingClientRect());
-            //.getBoundingClientRect()
-        });
-    }
+        for(var i=0; i < submenu.length; i++)
+        {
 
-    getReact();
+        }
+        console.log(submenu.children);
+
+    }
+    getReact ();
+
+
+
     const opt = new options();
     initFlexMenu(opt);
 

@@ -63,13 +63,19 @@ nav{
 }
 
 nav ul ul {
+  min-width: 220px;
   display: none;
   z-index: 10;
   flex-direction: column;
   position: absolute;
   top: 100%;
   left: 0;
-
+  li{
+    position: relative;
+    ul{
+      left: 100%;
+    }
+  }
 }
 
 nav ul.more-dropdawn{
@@ -77,10 +83,6 @@ nav ul.more-dropdawn{
   left: auto;
 }
 
-.level-3{
-  display: none;
-  left: 80px;
-}
 
 li.more-button{
   &:hover{

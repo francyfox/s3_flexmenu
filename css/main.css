@@ -61,6 +61,7 @@ nav ul li a:hover {
   background: #86869a;
 }
 nav ul ul {
+  min-width: 220px;
   display: none;
   z-index: 10;
   flex-direction: column;
@@ -68,13 +69,15 @@ nav ul ul {
   top: 100%;
   left: 0;
 }
+nav ul ul li {
+  position: relative;
+}
+nav ul ul li ul {
+  left: 100%;
+}
 nav ul.more-dropdawn {
   right: 0;
   left: auto;
-}
-.level-3 {
-  display: none;
-  left: 80px;
 }
 li.more-button:hover ul {
   display: flex;
