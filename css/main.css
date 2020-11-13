@@ -60,29 +60,42 @@ nav ul li a:hover {
 .menu ul li:nth-child(2n) a:hover {
   background: #86869a;
 }
+.menu ul li:nth-child(2n) li:nth-child(2n) a {
+  background: #5e7170;
+}
 nav ul ul {
+  border: 1px solid #bdbdbd;
+  box-shadow: 2px 13px 8px #4a4a58;
   min-width: 220px;
-  display: none;
   z-index: 10;
   flex-direction: column;
   position: absolute;
   top: 100%;
   left: 0;
 }
-nav ul ul li {
+nav ul ul li:nth-child(2n) {
   position: relative;
 }
-nav ul ul li ul {
+nav ul ul li:nth-child(2n) a {
+  background: #715e6a;
+}
+nav ul ul ul {
   left: 100%;
 }
 nav ul.more-dropdawn {
+  visibility: hidden;
   right: 0;
   left: auto;
 }
 li.more-button:hover ul {
   display: flex;
+  visibility: visible;
+}
+.closed {
+  visibility: hidden;
 }
 ._opened > ul {
+  visibility: visible;
   display: flex;
 }
 /*# sourceMappingURL=main.css.map */

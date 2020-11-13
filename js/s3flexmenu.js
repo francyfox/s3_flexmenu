@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         menuOffsetWidth = menu.offsetWidth,
         menu_width = menu.scrollWidth,
         menu_folder = menu.querySelectorAll('li'),
-        submenu = menu.children[0].children,
+        submenu = menu.children[0].querySelectorAll('ul'),
         MaxWidth = 0,
         TagsWidth = [];
 
@@ -61,7 +61,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
         for (var i = 0, count = 0; i < menu_folder.length; i++)
         {
 
+
             if (menu_folder[i].parentNode.parentNode.classList.contains('menu')){
+
                 TagsWidth[count] = menu_folder[i].offsetWidth;
 
                 if (MaxWidth < menuOffsetWidth - more.offsetWidth){
@@ -80,20 +82,79 @@ document.addEventListener("DOMContentLoaded", function(event) {
         more.querySelector('ul.'+options.MoreDrapdawnClass).prepend(menu.children[0].children[last]);
     }
 
-    function getReact ()
+
+    function ReactPosition ()
     {
-        for(var i=0; i < submenu.length; i++)
+
+        submenu.forEach(function(item, i, arr)
         {
 
-        }
-        console.log(submenu.children);
+            var left = Math.ceil(item.getBoundingClientRect().left);
+            var right = Math.ceil(item.getBoundingClientRect().right);
 
+            // item.setAttribute('react-left', left);
+            // item.setAttribute('react-right', right);
+
+
+
+            //check direction
+
+            if(left > window)
+            {
+                item.style.left = '100%';
+                item.style.right = 'initial';
+                item.setAttribute('direct', 'right');
+
+            }else if(right > window)
+            {
+
+                item.style.right = '100%';
+                item.style.left = 'initial';
+                item.setAttribute('direct', 'left');
+
+            }else if(item.getAttribute('direct') == 'left')
+            {
+                item.style.right = '100%';
+                item.style.left = 'initial';
+            }else  if(item.getAttribute('direct') == 'right')
+            {
+                item.style.left = '100%';
+                item.style.right = 'initial';
+            }
+
+            //sometimes all your code contains stupid ifs
+
+            var hasAttr = item.parentElement.parentElement.hasAttribute('direct');
+
+
+            if(hasAttr)
+            {
+                var value = item.parentElement.parentElement.getAttribute('direct');
+                item.setAttribute('direct', value);
+            }
+
+            if(item.getAttribute('direct') == 'left')
+            {
+                item.style.right = '100%';
+                item.style.left = 'initial';
+            }else  if(item.getAttribute('direct') == 'right')
+            {
+                item.style.left = '100%';
+                item.style.right = 'initial';
+            }
+
+            item.classList.add('closed');
+        });
+
+
+        //.getBoundingClientRect()
     }
-    getReact ();
 
 
-
+    ReactPosition ();
     const opt = new options();
+    console.log(submenu);
+
     initFlexMenu(opt);
 
 
